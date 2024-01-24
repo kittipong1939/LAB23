@@ -1,11 +1,10 @@
 const express = require("express");
-const router = express.Router();
-const authController = require("../controllers/auth-controller");
+const productController = require("../controllers/product-controller");
 
-router.post("/register", authController.register);
-router.post("/login", authController.login);
-router.post("/forget-password", authController.forgetPassword);
-router.get("/forget-password/:token", authController.verifyForgetPassword);
-router.post("/reset-password", authController.resetPassword);
+const router = express.Router();
+
+router.get("/landing", productController.getProductsLanding);
+router.get("/", productController.getProducts);
+router.get("/:productId", productController.getProductById);
 
 module.exports = router;
